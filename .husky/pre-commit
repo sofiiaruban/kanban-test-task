@@ -1,1 +1,1 @@
-npm test
+npx vitest run || exit 1
