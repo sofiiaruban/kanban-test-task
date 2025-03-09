@@ -1,4 +1,4 @@
-import { Box, Heading, HStack, Stack } from '@chakra-ui/react'
+import { HStack, Stack } from '@chakra-ui/react'
 import GitHubRepoForm from '../blocks/GitHubRepoForm'
 import { buttonTitles, placeholders } from '@/lib/data'
 import { FormValues } from '@/types/types'
