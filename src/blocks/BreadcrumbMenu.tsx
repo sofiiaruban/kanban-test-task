@@ -1,24 +1,26 @@
-import { generateLinksFromUrl } from '@/utils/helpers/helpers'
-import { Breadcrumb } from '@chakra-ui/react'
+import { Breadcrumb, Text } from '@chakra-ui/react'
 import { Tooltip } from '@/components/ui/tooltip'
 import { FC } from 'react'
+import { generateLinksFromSegments } from '@/utils/helpers/helpers'
 
 interface BreadcrumbMenuProps {
-  url: string
+  pathSegments: string[]
 }
 
-const BreadcrumbMenu: FC<BreadcrumbMenuProps> = ({ url }) => {
-  const menuLinks = generateLinksFromUrl(url)
+const BreadcrumbMenu: FC<BreadcrumbMenuProps> = ({ pathSegments }) => {
+  const menuLinks = generateLinksFromSegments(pathSegments)
   const menuLinksArray = Object.entries(menuLinks)
   const lastMenuItemIndex = menuLinksArray.length - 1
-  
+
   return (
     <Breadcrumb.Root>
       <Breadcrumb.List>
         {menuLinksArray.map(([key, value], index) => (
           <Breadcrumb.Item key={index}>
             <Tooltip content={`Go to ${value}`}>
-              <Breadcrumb.Link href={value}>{key}</Breadcrumb.Link>
+              <Breadcrumb.Link href={value}>
+                <Text textTransform="capitalize">{key}</Text>
+              </Breadcrumb.Link>
             </Tooltip>
             {index !== lastMenuItemIndex && <Breadcrumb.Separator />}
           </Breadcrumb.Item>
