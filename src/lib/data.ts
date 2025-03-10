@@ -12,4 +12,8 @@ export const validationMessages = {
 export const buttonTitles = {
   URLSubmit: 'Load Issues'
 } as const
+
 export const BASE_URL = 'https://github.com'
+export const GITHUB_API_BASE_URL = 'https://api.github.com'
+
+export const MIN_REQUIRED_SEGMENTS = 2
