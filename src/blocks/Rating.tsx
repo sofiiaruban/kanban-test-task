@@ -3,7 +3,7 @@ import { FC } from 'react'
 import { IoIosStar } from 'react-icons/io'
 
 interface RatingProps {
-  rating: string
+  rating: number | undefined
 }
 
 const Rating: FC<RatingProps> = ({ rating }) => {
