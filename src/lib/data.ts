@@ -17,3 +17,9 @@ export const BASE_URL = 'https://github.com'
 export const GITHUB_API_BASE_URL = 'https://api.github.com'
 
 export const MIN_REQUIRED_SEGMENTS = 2
+
+export const boardColumns = [
+  { id: 'TODO', title: 'To Do' },
+  { id: 'IN_PROGRESS', title: 'In Progress' },
+  { id: 'DONE', title: 'Done' }
+] as const

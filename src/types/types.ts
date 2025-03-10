@@ -37,60 +37,60 @@ interface User {
   site_admin: boolean
 }
 interface License {
-  key: string;
-  name: string;
-  spdx_id: string;
-  url: string;
-  node_id: string;
-}
-
-export interface GithubIssue {
+  key: string
+  name: string
+  spdx_id: string
   url: string
-  repository_url: string
-  labels_url: string
-  comments_url: string
-  events_url: string
-  html_url: string
-  id: number
   node_id: string
-  number: number
-  title: string
-  user: User
-  labels: string[]
-  state: string
-  locked: boolean
-  assignee: null
-  assignees: string[]
-  milestone: null
-  comments: number
-  created_at: string
-  updated_at: string
-  closed_at: null
-  author_association: string
-  sub_issues_summary: {
-    total: number
-    completed: number
-    percent_completed: number
-  }
-  active_lock_reason: null
-  body: string
-  closed_by: null
-  reactions: {
-    url: string
-    total_count: number
-    '+1': number
-    '-1': number
-    laugh: number
-    hooray: number
-    confused: number
-    heart: number
-    rocket: number
-    eyes: number
-  }
-  timeline_url: string
-  performed_via_github_app: null
-  state_reason: null
 }
+//
+//export interface GithubIssue {
+//  url: string
+//  repository_url: string
+//  labels_url: string
+//  comments_url: string
+//  events_url: string
+//  html_url: string
+//  id: number
+//  node_id: string
+//  number: number
+//  title: string
+//  user: User
+//  labels: string[]
+//  state: string
+//  locked: boolean
+//  assignee: null
+//  assignees: string[]
+//  milestone: null
+//  comments: number
+//  created_at: string
+//  updated_at: string
+//  closed_at: null
+//  author_association: string
+//  sub_issues_summary: {
+//    total: number
+//    completed: number
+//    percent_completed: number
+//  }
+//  active_lock_reason: null
+//  body: string
+//  closed_by: null
+//  reactions: {
+//    url: string
+//    total_count: number
+//    '+1': number
+//    '-1': number
+//    laugh: number
+//    hooray: number
+//    confused: number
+//    heart: number
+//    rocket: number
+//    eyes: number
+//  }
+//  timeline_url: string
+//  performed_via_github_app: null
+//  state_reason: null
+//}
 
 export interface Repository {
   id: number
@@ -175,4 +175,24 @@ export interface Repository {
   temp_clone_token: string | null
   network_count: number
   subscribers_count: number
+}
+export interface GithubIssue {
+  title: string
+  id: number
+  created_at: string
+  user: {
+    type: string
+  }
+  comments: number
+}
+
+export type IssueStatus = 'TODO' | 'IN_PROGRESS' | 'DONE'
+
+export interface TransformedIssue {
+  title: string
+  issueId: number
+  createdAt: string
+  userType: string
+  commentsQuantity: number
+  status: IssueStatus
 }

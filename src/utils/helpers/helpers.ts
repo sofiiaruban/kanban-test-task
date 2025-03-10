@@ -3,7 +3,9 @@ import {
   GITHUB_API_BASE_URL,
   MIN_REQUIRED_SEGMENTS
 } from '@/lib/data'
+import { GithubIssue, IssueStatus, TransformedIssue } from '@/types/types'
 import axios, { AxiosResponse } from 'axios'
+import moment from 'moment'
 
 export const extractPathSegments = (url: string): string[] => {
   const cleanPath = url.replace(`${BASE_URL}/`, '')
@@ -29,4 +31,21 @@ export const fetchFromGithub = async <T>(endpoint: string): Promise<T> => {
     `${GITHUB_API_BASE_URL}${endpoint}`
   )
   return response.data
+}
+
+export const getTimeAgo = (isoDate: string): string => {
+  return moment(isoDate).fromNow()
+}
+
+export const transformIssues = (issues: GithubIssue[]): TransformedIssue[] => {
+  const transformedIssues = issues.map((issue) => ({
+    title: issue.title,
+    issueId: issue.id,
+    createdAt: issue.created_at,
+    userType: issue.user.type,
+    commentsQuantity: issue.comments,
+    status: 'TODO' as IssueStatus
+  }))
+
+  return transformedIssues
 }
